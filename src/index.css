@@ -1,0 +1,123 @@
+/* ─────────────────────────────────────────────────────────────
+   index.css
+   Sistema de tokens de diseño y estilos globales de NexoForm.
+
+   Estructura:
+   1. CSS Variables (tokens de diseño por tema)
+   2. Reset y base
+   3. Tipografía global
+   4. Utilidades de animación
+   ───────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+/* ── 1. Tokens de diseño ──────────────────────────────────── */
+:root {
+  /* Fondos y superficies */
+  --bg: #F6F4F1;
+  --sur: #FFF;
+  --elv: #EDEAE5;
+
+  /* Texto */
+  --tp: #18161A;
+  --ts: #6B6560;
+  --tm: #9E9890;
+
+  /* Acento principal */
+  --ac: #2563EB;
+  --ach: #1D4ED8;
+  --as: #EFF6FF;
+
+  /* Estado éxito */
+  --ok: #15803D;
+  --oks: #F0FDF4;
+
+  /* Estado error */
+  --er: #DC2626;
+  --ers: #FEF2F2;
+
+  /* Bordes */
+  --bd: #E5E1DA;
+  --bdf: #2563EB;
+
+  /* Sombra */
+  --sh: 0 8px 40px rgba(0, 0, 0, 0.10);
+
+  /* Tipografía */
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Transiciones */
+  --tr: 0.2s ease;
+  --tr-slow: 0.3s ease;
+}
+
+[data-theme='dark'] {
+  --bg: #0D0F18;
+  --sur: #14172A;
+  --elv: #1E2238;
+  --tp: #F0EEF8;
+  --ts: #A0A0B8;
+  --tm: #606078;
+  --ac: #60A5FA;
+  --ach: #93C5FD;
+  --as: #1A2840;
+  --ok: #4ADE80;
+  --oks: #052E16;
+  --er: #F87171;
+  --ers: #2D0707;
+  --bd: #2A2D42;
+  --bdf: #60A5FA;
+  --sh: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ── 2. Reset y base ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--tp);
+  transition: background var(--tr-slow), color var(--tr-slow);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::placeholder {
+  color: var(--tm);
+}
+
+/* ── 3. Tipografía global ─────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* ── 4. Animaciones ───────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease both;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.25s ease both;
+}
