@@ -142,23 +142,20 @@ npm run preview  # Previsualizar el build
 
 ### Probar con HTTPS usando `ngrok`
 
-Para probar la PWA o instalarla desde un dispositivo remoto vía HTTPS, puedes exponer el servidor de `vite preview` con `ngrok`:
+Para probar la PWA o instalarla desde un dispositivo remoto vía HTTPS, expón el servidor de `vite preview` con `ngrok` sin fijar un puerto: Vite puede usar `5173` por defecto o elegir otro puerto si el anterior está ocupado.
 
-1. En una terminal, genera la build y arranca el servidor de previsualización en el puerto `5173`:
+1. En una terminal, genera la build y arranca el servidor de previsualización (sin forzar puerto):
 
 ```bash
 npm run build
-npm run preview -- --port 5173
+npm run preview
 ```
 
-2. En otra terminal, inicia `ngrok` apuntando al puerto `5173`:
+2. Observa en la salida de `vite preview` la URL local que aparece (por ejemplo `Local: http://localhost:5173`). Usa el puerto que muestre ahí cuando inicies `ngrok` en otra terminal:
 
 ```bash
-# Si tienes el binario instalado globalmente
-ngrok http 5173
-
-# O usando npx (puede pedir login/authtoken según tu versión de ngrok)
-npx ngrok http 5173
+# Reemplaza <PUERTO> por el puerto que Vite imprimió (ej: 5173)
+npx ngrok http <PUERTO>
 ```
 
 3. Copia la URL `https://...` que `ngrok` devuelve y ábrela en tu dispositivo o navegador.
@@ -167,41 +164,19 @@ Con esto podrás probar instalación, comportamiento offline y auditorías Light
 
 ### Instalar `ngrok`
 
-Opciones rápidas para instalar `ngrok` en tu sistema:
-
-- **Windows (choco)**:
-
-```powershell
-choco install ngrok
-```
-
-- **Windows (scoop)**:
-
-```powershell
-scoop install ngrok
-```
-
-- **macOS (Homebrew)**:
+La forma recomendada para usar `ngrok` con este proyecto es mediante `npm`. Puedes instalarlo globalmente o usarlo sin instalación global con `npx`:
 
 ```bash
-brew install --cask ngrok
-```
-
-- **Linux / Alternativa universal (npm)**:
-
-```bash
-# Instalación global (requiere npm)
+# Instalación global (recomendado para uso frecuente)
 npm install -g ngrok
 
-# O usar sin instalar
+# Usar con npx sin instalar globalmente
 npx ngrok
 ```
 
-Después de instalar, añade tu `authtoken` (opcional pero recomendado) para aumentar límites y gestionar túneles desde tu cuenta:
+Después de instalar (o al usar por primera vez con `npx`), configura tu `authtoken`:
 
 ```bash
-ngrok config add-authtoken <TU_AUTHTOKEN>
-# o
 ngrok authtoken <TU_AUTHTOKEN>
 ```
 
