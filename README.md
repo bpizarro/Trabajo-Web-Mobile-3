@@ -116,7 +116,7 @@ Usuario → Componente → Hook → Service → localStorage
 
 ```bash
 # 1. Clonar el repositorio
-git clone <url-del-repo>
+git clone < url-del-repo >
 cd nexoform
 
 # 2. Instalar dependencias
@@ -254,6 +254,21 @@ NexoForm está configurada como Progressive Web App:
 - **Web App Manifest** con íconos, colores y modo `standalone`.
 - **Funciona offline** una vez cargada la primera vez.
 
+### ¿Cuenta como una aplicación?
+
+Sí. Cuando abres NexoForm desde el navegador sigue siendo una web, pero al instalarla como PWA o agregarla a la pantalla de inicio se comporta como una aplicación. En ese modo puede abrirse fuera del navegador normal y, una vez cacheada, seguir funcionando offline.
+
+Si entras desde Google o desde un enlace normal, sigue viéndose como una página web dentro del navegador. Eso no le quita la condición de PWA; solo significa que todavía no está instalada como app.
+
+### Cómo probar offline en el celular
+
+1. Abrir la URL desde el navegador del celular.
+2. Ir a los 3 puntos y presionar en el **logo de descarga** y abrirlo.
+3. Abrirla y darle en **Agregar a pantalla de inicio**, y abrirla por primera vez con conexión para que el Service Worker y los assets queden en caché.
+4. Activar modo avión o cortar Internet y volver a abrirla desde el ícono instalado.
+
+Si la app carga correctamente en ese estado, entonces el modo offline está funcionando.
+
 ### Instalar en iOS (Safari)
 
 1. Abrir la URL en Safari.
@@ -270,6 +285,16 @@ NexoForm está configurada como Progressive Web App:
 
 1. Hacer clic en el ícono de instalación en la barra de direcciones.
 2. Confirmar la instalación.
+
+### Uso con `ngrok` en móvil
+
+Cuando expones la app con `ngrok`, puede aparecer una página intermedia de seguridad o aviso en el celular antes de dejar entrar al túnel. Esto es normal en algunos navegadores y planes gratuitos de `ngrok`.
+
+- En PC puede abrir directo si ya pasaste la verificación o si el navegador guardó la sesión.
+- En móvil puede mostrarse la pantalla propia de `ngrok` antes de tu sitio.
+- Si aparece ese aviso, busca la opción para continuar al sitio.
+
+Si necesitas evitar esa interstitial con mayor consistencia, conviene usar un dominio propio, un despliegue en `Vercel` o `Netlify`, o un plan de `ngrok` que permita controlar mejor ese flujo.
 
 ---
 
