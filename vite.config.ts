@@ -39,6 +39,9 @@ export default defineConfig({
       }
     })
   ],
+  preview: {
+    allowedHosts: ['delay-upstairs-banter.ngrok-free.dev']
+  },
   resolve: {
     alias: {
       '@': '/src'
